@@ -86,16 +86,16 @@ saleRecord::saleRecord(int r, int c, double p) : row(r), column(c), price(p) {
 TicketManager::TicketManager() {
 	//DONT uncomment modules in the constructor until they are finished (or the program will not compile)
 	
-	//loadPriceData(); // Load seat prices from file
-	//loadPriceData(); // Load seat prices from file
-	//loadSeatAvailability(); // Load seat availability from file
+	//this->loadPriceData(); // Load seat prices from file
+	//this->loadPriceData(); // Load seat prices from file
+	//this->loadSeatAvailability(); // Load seat availability from file
 }
 
 TicketManager::~TicketManager() {
 	//DONT uncomment modules in the destructor until they are finished (or the program will not compile)
 	
-	//saveSalesData(); // Save sales data to file
-	//saveSeatAvailability(); // Save seat availability to file
+	//this->saveSalesData(); // Save sales data to file
+	//this->saveSeatAvailability(); // Save seat availability to file
 }
 
 void TicketManager::loadPriceData() {}
