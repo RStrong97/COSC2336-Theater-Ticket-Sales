@@ -1,6 +1,6 @@
 /*	COSC2336 Programing Fundamentals III
 	Instructor: Prof Currington
-	Students:	Group 5; Bradley Whais, Robert Armstrong, Ayodeji Osungbohun
+	Students: Group 5; Bradley Whais, Robert Armstrong, Ayodeji Osungbohun
 	Last Updated: 03/29/2025	
 	Description:
 	This program simulates a theater ticket sales system.
@@ -13,10 +13,16 @@
 #include <string>
 #include <iomanip>
 #include <fstream>
+#include <vector>
+#include <ctime>
 
 using namespace std;
 
 //HOUSEKEEPING
+
+const string SEATMAPFILE = "seatAvailability.dat";
+const string ROWPRICES = "seatPrices.dat";
+const string SALEDATA = "salesData.dat";
 
 struct seat {
 	char isAvailable;
@@ -25,23 +31,93 @@ struct seat {
 	seat(char, double);
 	seat();
 };
+struct saleRecord {
+	int row;
+	int column;
+	double price;
+	string date;
+
+	saleRecord(int, int, double, string); // Constructor with row, column, price, and date
+	saleRecord(int, int, double); // Constructor with row, column, and price only, generates date automatically
+};
 
 // CLASSES
 
-class TICKETMANAGER {
+class TicketManager {
 private:
 	seat seatMap[15][30]; // 15 rows and 30 columns
+
+	//file operations
+	void loadPriceData(); // Load seat prices from file
+	void loadSalesData(); // Load sales data from file
+	void loadSeatAvailability(); // Load seat availability from file
+	void saveSalesData(); // Save sales data to file
+	void saveSeatAvailability(); // Save seat availability to file
+
+	//internal functions
+	bool purchaseTickets(int, int, int); // Process ticket purchase
+	bool pointOfSale(double); // Handle payment processing
+
+public:
+	TicketManager(); //constructor
+
+	//menu operations
+	void displayMenu(); // starts the menu handler
+
+	void displaySeats(); // Display the seat map
+	void requestTickets(); // Request tickets from the user
+	void displaySalesReport(); // Display sales report
+	void quit(); // Quit the program
+
+	~TicketManager(); //destructor
 };
 
 // MODULES
 seat::seat(char isAvailable, double price) : isAvailable(isAvailable), price(price) {} //uses supplied values for availability and price
-seat::seat() : isAvailable(true), price(10.00) {} // Default price is $10.00 and available
+seat::seat() : isAvailable('#'), price(10.00) {} // Default price is $10.00 and available
 
+saleRecord::saleRecord(int r, int c, double p) : row(r), column(c), price(p) {
+	// Get current date
+	time_t now = time(0);
+	date = ctime(&now); // Convert to string
+	date.erase(date.length() - 1); // Remove newline character
+}
+
+TicketManager::TicketManager() {
+	//DONT uncomment modules in the constructor until they are finished (or the program will not compile)
+	
+	//loadPriceData(); // Load seat prices from file
+	//loadPriceData(); // Load seat prices from file
+	//loadSeatAvailability(); // Load seat availability from file
+}
+
+TicketManager::~TicketManager() {
+	//DONT uncomment modules in the destructor until they are finished (or the program will not compile)
+	
+	//saveSalesData(); // Save sales data to file
+	//saveSeatAvailability(); // Save seat availability to file
+}
+
+void TicketManager::loadPriceData() {}
+void TicketManager::loadSalesData() {}
+void TicketManager::loadSeatAvailability() {}
+void TicketManager::saveSalesData() {}
+void TicketManager::saveSeatAvailability() {}
+
+bool TicketManager::purchaseTickets(int row, int column, int quantity) {}
+bool TicketManager::pointOfSale(double saleAmount) {}
+
+void TicketManager::displayMenu() {}
+
+void TicketManager::displaySeats() {}
+void TicketManager::requestTickets() {}
+void TicketManager::displaySalesReport() {}
+void TicketManager::quit() {}
 
 
 // MAINLINE
 
 int main() {
-
+	cout << "TEST";
 	return 0;
 }
