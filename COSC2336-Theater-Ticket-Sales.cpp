@@ -48,15 +48,15 @@ private:
 	seat seatMap[15][30]; // 15 rows and 30 columns
 
 	//file operations
-	void loadPriceData(); // Load seat prices from file
-	void loadSalesData(); // Load sales data from file
-	void loadSeatAvailability(); // Load seat availability from file
-	void saveSalesData(); // Save sales data to file
-	void saveSeatAvailability(); // Save seat availability to file
+	void loadPriceData(); // Load seat prices from file                   // ARMSTRONG
+	void loadSalesData(); // Load sales data from file                    // ARMSTRONG
+	void loadSeatAvailability(); // Load seat availability from file      // ARMSTRONG
+	void saveSalesData(); // Save sales data to file                      // ARMSTRONG
+	void saveSeatAvailability(); // Save seat availability to file        // ARMSTRONG
 
 	//internal functions
-	bool purchaseTickets(int, int, int); // Process ticket purchase
-	bool pointOfSale(double); // Handle payment processing
+	bool purchaseTickets(int, int, int); // Process ticket purchase       // ARMSTRONG
+	bool pointOfSale(double); // Handle payment processing                // ARMSTRONG
 
 public:
 	TicketManager(); //constructor
