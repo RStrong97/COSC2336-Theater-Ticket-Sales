@@ -98,7 +98,23 @@ TicketManager::~TicketManager() {
 	//this->saveSeatAvailability(); // Save seat availability to file
 }
 
-void TicketManager::loadPriceData() {}
+void TicketManager::loadPriceData()
+{
+	ifstream priceFile(ROWPRICES);
+	if (!priceFile) {
+		cerr << "Error opening price file." << endl;
+		return;
+	}
+
+	for (int i = 0; i < 15; ++i) {
+		for (int j = 0; j < 30; ++j) {
+			priceFile >> seatMap[i][j].price;
+		}
+	}
+
+	priceFile.close();
+}
+
 void TicketManager::loadSalesData() {}
 void TicketManager::loadSeatAvailability() {}
 void TicketManager::saveSalesData() {}
